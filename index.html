@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TODO: Set the document title to the name of your application -->
+    <title>aimailagent</title>
+    <meta name="description" content="Cold Email Generator" />
+    <meta name="author" content="aimailagent.in" />
+
+    <!-- TODO: Update og:title to match your application name -->
+    <meta property="og:title" content="aimailagent" />
+    <meta property="og:description" content="Cold Email Generator" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@aimailagent" />
+    <meta name="twitter:image" content="https://" />
+  </head>
+  
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <script>
+  async function loadUsage() {
+    const res = await fetch("http://localhost/leavecraft/google-callback.php?email=user@gmail.com");
+    const data = await res.json();
+  
+    document.getElementById("usage").innerText =
+      `Used: ${data.tokens_used} tokens | Plan: ${data.plan}`;
+  }
+  
+  loadUsage();
+  
+  async function upgrade() {
+    const res = await fetch("create_order.php");
+    const order = await res.json();
+  
+    const options = {
+      key: "rzp_test_SYFTP1SXWQN77T",
+      amount: order.amount,
+      currency: "INR",
+      name: "Cold Email Tool",
+      description: "Upgrade Plan",
+      order_id: order.id,
+  
+      handler: function (response) {
+        alert("Payment successful!");
+  
+        fetch("verify_payment.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: "user@gmail.com"
+          })
+        });
+      }
+    };
+  
+    const rzp = new Razorpay(options);
+    rzp.open();
+  }
+  </script>
+  <body>
+    <div id="root">
+      
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
