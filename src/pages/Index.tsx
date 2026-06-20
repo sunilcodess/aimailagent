@@ -146,6 +146,7 @@ const Index = () => {
   const isStudent = purpose === "Student";
   const [emailType, setEmailType] = useState<string>("");
   const [selectedHistory, setSelectedHistory] = useState<any>(null);
+
   const isLeaveType =
     isStudent &&
     (studentSubPurpose === "Leave Application" ||
@@ -236,11 +237,30 @@ const Index = () => {
 
   const handleGenerate = async () => {
     setBody("");
+
     if (!canGenerate) return;
 
     setLoading(true);
 
     try {
+      const payload = {
+        email: localStorage.getItem("user_email"),
+        name: fullName,
+        purpose,
+
+        userMode,
+        studentSubPurpose,
+        leaveReason,
+        emailType,
+        company: companyName,
+        role: roleOrService,
+        tone,
+        startDate: selectedDate,
+        endDate: endDate,
+      };
+
+      console.log("Payload:", payload);
+
       const response = await fetch(
         "http://localhost/leavecraft/backend/generate_email.php",
         {
@@ -248,20 +268,13 @@ const Index = () => {
           headers: {
             "Content-Type": "application/json",
           },
-
-          body: JSON.stringify({
-            email: localStorage.getItem("user_email"),
-            name: fullName,
-            purpose,
-            company: companyName,
-            role: roleOrService,
-            tone,
-          }),
+          body: JSON.stringify(payload),
         }
       );
 
       const data = await response.json();
 
+      console.log("Response:", data);
       if (data.success) {
         // EMAIL SHOW
         setBody(data.email);
@@ -285,7 +298,8 @@ const Index = () => {
           }),
         });
       } else {
-        alert("Error: " + JSON.stringify(data.error));
+        console.log(data);
+        alert(data.error || "Email generation failed");
       }
     } catch (err) {
       console.error(err);
@@ -419,6 +433,7 @@ const Index = () => {
           </Button>
         </div>
       </div>
+      000{" "}
       {subscriptionPlan === "free" && (
         <div className="text-sm text-muted-foreground font-bold uppercase">
           <span
@@ -431,7 +446,6 @@ const Index = () => {
         </div>
       )}
       {/* --- MAIN GRID LAYOUT --- */}
-
       <div className="container mx-auto py-6">
         <form
           onSubmit={(e) => {

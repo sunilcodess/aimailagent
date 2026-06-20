@@ -5,15 +5,17 @@ const AuthSuccess = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // 1. URL se data nikalna
     const params = new URLSearchParams(window.location.search);
     const userData = params.get("user");
 
     if (userData) {
       try {
-        // 2. Data is save
-        localStorage.setItem("user", userData);
-        // 3. send to dashboard with page refresh
+        const parsedUser = JSON.parse(userData);
+        // SAVE USER DATA
+        localStorage.setItem("user", parsedUser.email);
+        localStorage.setItem("user_email", parsedUser.email);
+        localStorage.setItem("user_name", parsedUser.name);
+        // REDIRECT
         window.location.href = "/";
       } catch (error) {
         console.error("Auth error:", error);

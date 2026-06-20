@@ -196,7 +196,7 @@ export function Appsidebar() {
                 className="w-10 h-10 rounded-full shrink-0 object-cover"
               />
             ) : (
-              <div className="w-10 h-10 shrink-0 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold uppercase shadow-md shadow-purple-500/20">
+              <div className="w-10 h-10 shrink-0 rounded-full bg-gradient-to-br from-purple-500 flex items-center justify-center text-white font-bold uppercase shadow-md shadow-purple-500/20">
                 {userName.charAt(0)}
               </div>
             )}

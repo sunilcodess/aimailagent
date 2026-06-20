@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,55 +18,56 @@
     <meta name="twitter:site" content="@aimailagent" />
     <meta name="twitter:image" content="https://" />
   </head>
-  
+
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <script>
-  async function loadUsage() {
-    const res = await fetch("http://localhost/leavecraft/google-callback.php?email=user@gmail.com");
-    const data = await res.json();
-  
-    document.getElementById("usage").innerText =
-      `Used: ${data.tokens_used} tokens | Plan: ${data.plan}`;
-  }
-  
-  loadUsage();
-  
-  async function upgrade() {
-    const res = await fetch("create_order.php");
-    const order = await res.json();
-  
-    const options = {
-      key: "rzp_test_SYFTP1SXWQN77T",
-      amount: order.amount,
-      currency: "INR",
-      name: "Cold Email Tool",
-      description: "Upgrade Plan",
-      order_id: order.id,
-  
-      handler: function (response) {
-        alert("Payment successful!");
-  
-        fetch("verify_payment.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            email: "user@gmail.com"
-          })
-        });
-      }
-    };
-  
-    const rzp = new Razorpay(options);
-    rzp.open();
-  }
+    async function loadUsage() {
+      const res = await fetch(
+        "http://localhost/leavecraft/backend/google-callback.php?email=user@gmail.com"
+      );
+      const data = await res.json();
+
+      document.getElementById(
+        "usage"
+      ).innerText = `Used: ${data.tokens_used} tokens | Plan: ${data.plan}`;
+    }
+
+    loadUsage();
+
+    async function upgrade() {
+      const res = await fetch("create_order.php");
+      const order = await res.json();
+
+      const options = {
+        key: "rzp_test_SYFTP1SXWQN77T",
+        amount: order.amount,
+        currency: "INR",
+        name: "Cold Email Tool",
+        description: "Upgrade Plan",
+        order_id: order.id,
+
+        handler: function (response) {
+          alert("Payment successful!");
+
+          fetch("verify_payment.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: "user@gmail.com",
+            }),
+          });
+        },
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.open();
+    }
   </script>
   <body>
-    <div id="root">
-      
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -85,7 +85,7 @@ const Login = () => {
         {
           theme: "outline",
           size: "large",
-          width: "100%",
+          width: "300",
         }
       );
     };
@@ -142,6 +142,14 @@ const Login = () => {
     e.preventDefault();
 
     try {
+      console.log({
+        name,
+        email,
+        password,
+      });
+
+      console.log("signup button clicked");
+
       const res = await fetch(
         "http://localhost/leavecraft/backend/signup.php",
         {
@@ -152,16 +160,18 @@ const Login = () => {
           },
 
           body: JSON.stringify({
-            fullName: name,
+            name,
             email,
             password,
           }),
         }
       );
+      console.log("fatch completed");
 
-      const data = await res.json();
+      const rawtext = await res.text();
+      console.log("RAW RESPONSE:", rawtext);
 
-      console.log(data);
+      const data = JSON.parse(rawtext);
 
       if (data.status === "success") {
         alert("Account Created Successfully");
@@ -177,7 +187,9 @@ const Login = () => {
         setIsSignup(false);
 
         setName("");
+
         setEmail("");
+
         setPassword("");
       } else {
         alert(data.message || "Signup Failed");
@@ -197,7 +209,7 @@ const Login = () => {
         {/* TOP */}
 
         <div className="flex flex-col items-center mb-8">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-purple-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
             <Sparkles className="w-8 h-8 text-white" />
           </div>
 
