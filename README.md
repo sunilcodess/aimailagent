@@ -76,4 +76,4 @@ This project was built for learning, portfolio, and practical AI integration exp
 ![Subscription Dark](screenshots/subscription-dark.png)
 
 ### Generated Email PDF
-![Generated Email PDF](screenshots/generated-email-pdf.png)
+![Generated Email PDF](screenshots/email-pdf.png)
