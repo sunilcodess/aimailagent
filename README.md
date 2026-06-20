@@ -58,10 +58,10 @@ This project was built for learning, portfolio, and practical AI integration exp
 ## Screenshots
 
 ### Login Page
-![Login Page](screenshots/login-page.jpeg)
+![Login Page](screenshots/Login-page.jpeg)
 
 ### Signup Page
-![Signup Page](screenshots/signup-page.jpeg)
+![Signup Page](screenshots/Signup-page.jpeg)
 
 ### Dashboard (Light Theme)
 ![Dashboard Light](screenshots/dashboard-light.jpeg)
@@ -76,4 +76,4 @@ This project was built for learning, portfolio, and practical AI integration exp
 ![Subscription Dark](screenshots/subscription-dark.png)
 
 ### Generated Email PDF
-![Generated Email PDF](screenshots/generated-email-pdf.png)
+![Generated Email PDF](screenshots/email-pdf.png)
