@@ -67,7 +67,7 @@ This project was built for learning, portfolio, and practical AI integration exp
 ![Dashboard Light](screenshots/dashboard-light.jpeg)
 
 ### Dashboard (Dark Theme)
-![Dashboard Dark](screenshots/dashboard-dark.jpeg)
+![Dashboard Dark](screenshots/dashboard-dark.png)
 
 ### Subscription Plan (Light Theme)
 ![Subscription Light](screenshots/subscription-light.png)
@@ -76,4 +76,4 @@ This project was built for learning, portfolio, and practical AI integration exp
 ![Subscription Dark](screenshots/subscription-dark.png)
 
 ### Generated Email PDF
-![Generated Email PDF](screenshots/email-pdf.png)
+![Generated Email PDF](screenshots/generated-email-pdf.png)
