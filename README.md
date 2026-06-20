@@ -54,3 +54,26 @@ https://www.linkedin.com/in/sunil-kumawat-410454340
 ## Note
 
 This project was built for learning, portfolio, and practical AI integration experience.
+
+## Screenshots
+
+### Login Page
+![Login Page](screenshots/login-page.jpeg)
+
+### Signup Page
+![Signup Page](screenshots/signup-page.jpeg)
+
+### Dashboard (Light Theme)
+![Dashboard Light](screenshots/dashboard-light.jpeg)
+
+### Dashboard (Dark Theme)
+![Dashboard Dark](screenshots/dashboard-dark.jpeg)
+
+### Subscription Plan (Light Theme)
+![Subscription Light](screenshots/subscription-light.png)
+
+### Subscription Plan (Dark Theme)
+![Subscription Dark](screenshots/subscription-dark.png)
+
+### Generated Email PDF
+![Generated Email PDF](screenshots/generated-email-pdf.png)
